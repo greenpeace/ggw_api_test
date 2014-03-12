@@ -1,0 +1,8 @@
+<?php 
+class config {
+	public static $token = "xxx";
+	public static function auth() {
+		return array('token' => self::$token);
+	}
+}
+?>
