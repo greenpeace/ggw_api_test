@@ -7,16 +7,16 @@ $data = array(
 	"domain" => "netherlands",
 	"limit" => 1
 );
-$url = 'https://greenwire.greenpeace.org/api/public/events.json?';
+$url = '/public/events.json?';
 
 $s = new ggw_socket();
 $result = $s->get($url,$data);
 
-echo '<p> GET ' . $s->uri . '</p>';
+echo '<p> GET ' . $s->uri . ' ('. $s->timer . ')</p>';
 
 // Results
 if($result === false){
-	echo 'Curl error: ' . $s->error;
+	echo 'Curl error: ' . $s->curl_error;
 } else {
 	$json_string = json_decode($result);
 	echo '<pre>';

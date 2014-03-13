@@ -8,16 +8,16 @@ $data = array(
 	"must_have_default_avatar" => "0",
 	"limit" => 1
 );
-$url = 'https://greenwire.greenpeace.org/api/public/volunteers.json?';
+$url = '/public/volunteers.json?';
 
 $s = new ggw_socket();
 $result = $s->get($url,$data);
 
-echo '<p> GET ' . $s->uri . '</p>';
+echo '<p> GET ' . $s->uri . ' ('. $s->timer . ')</p>';
 
 // Results
 if($result === false){
-	echo 'Curl error: ' . $s->error;
+	echo 'Curl error: ' . $s->curl_error;
 } else {
 	$json_string = json_decode($result);
 	echo '<pre>';

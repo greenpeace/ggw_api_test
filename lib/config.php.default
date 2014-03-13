@@ -1,8 +1,18 @@
 <?php 
 class config {
-	public static $token = "xxx";
-	public static function auth() {
-		return array('token' => self::$token);
+	public static $environment = 'https://greenwire.greenpeace.org/api';
+	public static $api_token = '';
+
+	public static $http_auth = false;
+	public static $http_user = '';
+	public static $http_pass = '';
+
+	public static function api_auth() {
+		return array('token' => self::$api_token);
+	}
+
+	public static function http_auth() {
+		return self::$http_user . ':' . self::$http_pass ;
 	}
 }
 ?>
