@@ -51,6 +51,47 @@ class ggw_socket {
 
 	}
 
+  /**
+   * REST POST
+   * @param $url string base url
+   * @param $data array parameters to be added in URL
+   * @param $postdata the data to be posted
+   * @param $auth string auth token
+   */
+  public function post($url,$data, $postdata, $api_auth=false) {
+    $this->result = false;
+    $this->curl_error = null;
+    $headers = array(
+      'Cache-Control: no-cache'
+    );
+
+    $this->uri = Config::$environment . $url . http_build_query($data);
+
+    // Api and http auth
+    if ($api_auth) {
+      $this->uri = $this->uri . '&' . http_build_query(Config::api_auth());
+    }
+    $this->curl = curl_init($this->uri);
+    curl_setopt($this->curl, CURLOPT_POST, 1);
+    curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, 0);
+    curl_setopt($this->curl, CURLOPT_POSTFIELDS, $data);
+
+    if (Config::$http_auth) {
+      $this->setHttpAuth($this->curl);
+    }
+
+    $this->timer_start();
+    $this->result = curl_exec($this->curl);
+    $this->timer_end();
+
+    if($this->result === false) {
+      $this->curl_error =  curl_error($this->curl);
+    }
+    curl_close($this->curl);
+    return $this->result;
+  }
+
+
 	/**
 	 * REST GET
 	 * @param $url string base url
