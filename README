@@ -1,0 +1,31 @@
+How to run the demo?
+-----------------------
+
+1. Copy lib/config.php.default to config.php
+
+    $ cp lib/config.php.default lib/config.php
+
+2. Edit config php to match the environment your want to test
+See example in the file itself.
+
+
+How to run the test?
+-----------------------
+
+1. Make sure you have a working config file
+
+2. Make sure you have composer installed
+See: https://getcomposer.org/download/
+
+3. Install phpunit via composer
+
+    $ composer update
+
+4. Profits!
+
+    $ ./vendor/phpunit/phpunit/phpunit tests/ -c tests/phpunit.xml
+
+You can specify which testsuite to use example :
+
+    $ ./vendor/phpunit/phpunit/phpunit tests/ --testsuite public -c tests/phpunit.xml
+

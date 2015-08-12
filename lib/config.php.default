@@ -1,8 +1,14 @@
 <?php 
 class config {
-	public static $environment = 'https://greenwire.greenpeace.org/api';
+	// environment url
+	public static $environment = 'https://greenwire.greenpeace.org/api';		 // production
+	//public static $environment = 'https://greenwire-stage.greenpeace.org/api'; // staging
+
+
+	// set an API token for private endpoints
 	public static $api_token = '';
 
+	// set an http password for staging environment
 	public static $http_auth = false;
 	public static $http_user = '';
 	public static $http_pass = '';

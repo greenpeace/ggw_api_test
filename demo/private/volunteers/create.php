@@ -1,6 +1,6 @@
 <h1>Volunteers Create</h1>
 <?php
-include('../../lib/ggw_socket.php');
+include('../../bootstrap.php');
 
 // Config
 $data = array(

@@ -1,12 +1,12 @@
 <h1>Volunteers Index</h1>
 <?php
-include('../../lib/ggw_socket.php');
+include('../../../bootstrap.php');
 
 // Config
 $data = array(
 	"domain" => "netherlands",
-	"must_have_default_avatar" => "0",
-	"limit" => 405
+	"limit" => 405,
+    "active" => false,
 );
 $url = '/private/volunteers.json?';
 
